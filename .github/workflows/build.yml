@@ -5,13 +5,11 @@ on:
     paths-ignore:
       - "**.md"
       - LICENSE
-      - .github/FUNDING.yml
     branches: [main, dev]
   pull_request:
     paths-ignore:
       - "**.md"
       - LICENSE
-      - .github/FUNDING.yml
     branches: [main]
 
 jobs:

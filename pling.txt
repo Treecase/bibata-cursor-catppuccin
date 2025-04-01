@@ -1,6 +1,6 @@
-Bibata is one of the most popular cursors set in the Linux community so far and is now available for freely with multiple colors and size options for Windows as well. The aim of this project is to provide personalized cursors to users.
+Fork of Bibata cursors using the Catppuccin color theme.
 
-Check [url=https://github.com/ful1e5/Bibata_Cursor]README.md[/url] for installation, uninstallation, and personalize cursor sizes or colors.
+Check [url=https://github.com/Treecase/bibata-cursor-catppuccin]README.md[/url] for installation.
 
 [b]Bibata Styles:[/b]
 - Bibata Modern: Round Edges Bibata Cursors
@@ -15,8 +15,5 @@ Check [url=https://github.com/ful1e5/Bibata_Cursor]README.md[/url] for installat
 - 32x32 - Large
 - 48x48 - Extra Large
 
-[b]How to Personalize Bibata[/b]
-Visit [url=https://www.bibata.live]https://www.bibata.live[/url] to personalize and download your own Bibata Cursor.
-
 [b]License & Terms:[/b]
-'Bibata_Cursor' is available under the terms of the 'GPL-3.0' license.
+'bibata-cursor-catppuccin' is available under the terms of the 'GPL-3.0' license.

@@ -1,7 +1,7 @@
 #!/bin/bash
 # A script for preparing binaries of Bibata Cursors, created by Abdulkaiz Khatri.
 
-version="v2.0.6"
+version="v2.0.7"
 
 error() (
   set -o pipefail
@@ -32,18 +32,7 @@ if ! type -p ctgen >/dev/null; then
 fi
 
 declare -A names
-names["Bibata-Modern-Amber"]=$(with_version "Yellowish and rounded edge Bibata")
-names["Bibata-Modern-Amber-Right"]=$(with_version "Yellowish and rounded edge right-hand Bibata")
-names["Bibata-Modern-Classic"]=$(with_version "Black and rounded edge Bibata")
-names["Bibata-Modern-Classic-Right"]=$(with_version "Black and rounded edge right-hand Bibata")
-names["Bibata-Modern-Ice"]=$(with_version "White and rounded edge Bibata")
-names["Bibata-Modern-Ice-Right"]=$(with_version "White and rounded edge right-hand Bibata")
-names["Bibata-Original-Amber"]=$(with_version "Yellowish and sharp edge Bibata")
-names["Bibata-Original-Amber-Right"]=$(with_version "Yellowish and sharp edge right-hand Bibata")
-names["Bibata-Original-Classic"]=$(with_version "Black and sharp edge Bibata")
-names["Bibata-Original-Classic-Right"]=$(with_version "Black and sharp edge right-hand Bibata")
-names["Bibata-Original-Ice"]=$(with_version "White and sharp edge Bibata")
-names["Bibata-Original-Ice-Right"]=$(with_version "White and sharp edge right-hand Bibata")
+names["Bibata-Catppuccin-Mocha"]=$(with_version "Catppuccin Mocha flavored Bibata")
 
 # Cleanup old builds
 rm -rf themes bin
@@ -58,17 +47,17 @@ for key in "${!names[@]}"; do
   wait $PID
 done
 
-# Building Bibata Windows binaries
-for key in "${!names[@]}"; do
-  comment="${names[$key]}"
-  cfg_path=$(get_config_path "$key")
-
-  ctgen "$cfg_path/win_rg.build.toml" -d "bitmaps/$key" -n "$key-Regular" -c "$comment Windows Cursors" &
-  ctgen "$cfg_path/win_lg.build.toml" -d "bitmaps/$key" -n "$key-Large" -c "$comment Windows Cursors" &
-  ctgen "$cfg_path/win_xl.build.toml" -d "bitmaps/$key" -n "$key-Extra-Large" -c "$comment Windows Cursors" &
-  PID=$!
-  wait $PID
-done
+# # Building Bibata Windows binaries
+# for key in "${!names[@]}"; do
+#   comment="${names[$key]}"
+#   cfg_path=$(get_config_path "$key")
+#
+#   ctgen "$cfg_path/win_rg.build.toml" -d "bitmaps/$key" -n "$key-Regular" -c "$comment Windows Cursors" &
+#   ctgen "$cfg_path/win_lg.build.toml" -d "bitmaps/$key" -n "$key-Large" -c "$comment Windows Cursors" &
+#   ctgen "$cfg_path/win_xl.build.toml" -d "bitmaps/$key" -n "$key-Extra-Large" -c "$comment Windows Cursors" &
+#   PID=$!
+#   wait $PID
+# done
 
 # Compressing Binaries
 mkdir -p bin
@@ -86,12 +75,12 @@ tar -cJvf "../bin/Bibata.tar.xz" --exclude="*-Windows" . &
 PID=$!
 wait $PID
 
-# Compressing Bibata-*-Windows
-for key in "${!names[@]}"; do
-  zip -rv "../bin/${key}-Windows.zip" "${key}-Small-Windows" "${key}-Regular-Windows" "${key}-Large-Windows" "${key}-Extra-Large-Windows" &
-  PID=$!
-  wait $PID
-done
+# # Compressing Bibata-*-Windows
+# for key in "${!names[@]}"; do
+#   zip -rv "../bin/${key}-Windows.zip" "${key}-Small-Windows" "${key}-Regular-Windows" "${key}-Large-Windows" "${key}-Extra-Large-Windows" &
+#   PID=$!
+#   wait $PID
+# done
 
 cd ..
 
